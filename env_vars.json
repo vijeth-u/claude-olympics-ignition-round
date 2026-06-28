@@ -1,0 +1,4 @@
+{
+    "LLM_MODEL": "gpt-4o",
+    "OPENAI_MAX_COMPLETION_TOKENS": "4096"
+}

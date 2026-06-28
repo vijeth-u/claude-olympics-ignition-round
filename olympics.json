@@ -1,0 +1,24 @@
+{
+    "schema_version": "1.0",
+    "challenge_id": "ignition-turnaround-podium",
+    "entrypoint": {
+        "command": ["python", "{tool_main}", "{input_csv}"],
+        "tool_main": "medal_report.py"
+    },
+    "outputs": {
+        "primary": {
+            "type": "csv_file",
+            "path": "leaderboard.csv",
+            "columns": ["country_code", "medals"],
+            "fallback": {
+                "type": "stdout_csv",
+                "row_pattern": "^([A-Za-z]{2,3}),\\s*(\\d+)\\s*$"
+            }
+        }
+    },
+    "adapter": "leaderboard_v1",
+    "runtime_hints": {
+        "language": "python",
+        "requires": ["pandas", "numpy", "matplotlib"]
+    }
+}

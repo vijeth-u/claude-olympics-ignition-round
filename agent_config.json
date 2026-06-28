@@ -1,0 +1,10 @@
+{
+    "type": "python",
+    "runtime_version": "3.11",
+    "entry": "medal_report.py",
+    "run_command": "python medal_report.py {input}",
+    "requirements": "requirements.txt",
+    "env_file": "env_vars.json",
+    "required_env": [],
+    "timeout_seconds": 120
+}

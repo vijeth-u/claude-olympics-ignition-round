@@ -189,6 +189,14 @@ def compute_per_capita(board, pop_path=None):
     return merged.sort_values("medals_per_million", ascending=False)
 
 
+def write_leaderboard_csv(board, outfile="leaderboard.csv"):
+    """Write the leaderboard to CSV in the required output format."""
+    output = board[["total"]].rename(columns={"total": "medals"}).reset_index()
+    output.to_csv(outfile, index=False)
+    print(f"Leaderboard written to {outfile}")
+    return outfile
+
+
 def main():
     path = sys.argv[1] if len(sys.argv) > 1 else "olympic_medals.csv"
     df = load_data(path)
@@ -199,6 +207,9 @@ def main():
     print(f"{'='*50}")
     print(board.head(TOP_N).to_string())
     print()
+
+    # Write required output CSV
+    write_leaderboard_csv(board)
 
     make_chart(board)
 
